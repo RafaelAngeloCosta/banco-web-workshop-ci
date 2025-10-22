@@ -30,7 +30,7 @@ jobs:
        run: npm run server &
                
      - name: Executar os testes cypress
-       run: npx cypress open        
+       run: npx cypress run        
 
         
     
