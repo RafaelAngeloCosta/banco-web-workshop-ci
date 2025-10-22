@@ -8,30 +8,31 @@ jobs:
   tests: 
 
 
-  #[config do so] (windows/linux/mac, chrome/firefox/edge, ...)
+  # [config do so] (windows/linux/mac, chrome/firefox/edge, ...)
   runs-on: ubuntu-latest
 
-  #[variaveis] (variáveis de ambiente, chaves de acesso a plataformas, etc.)
+  # [variaveis] (variáveis de ambiente, chaves de acesso a plataformas, etc.)
   env:
-    API_BASE_URL: 'http://localhost:3000' # URL base da API REST Banco API ou do Mock Server
+    API_BASE_URL: 'http://localhost:3000'
     PORT: 4000
     
-  #[ações ou passos]
-    steps: 
-      -name: Checkout do Repositório
-        uses: actions/checkout@v4
+  # [ações ou passos]
+  steps: 
+  
+    -name: Checkout do Repositório
+     uses: actions/checkout@v4
 
-      -name: Instalando as dependências
-        uses: npm install
+    -name: Instalando as dependências
+     run: npm install
               
-      -name: Iniciar o servidor de mocks
-        uses: npm run mock-server &
+    -name: Iniciar o servidor de mocks
+     run: npm run mock-server &
         
-      -name: Iniciar o servidor de aplicação
-        uses: npm run server &
+    -name: Iniciar o servidor de aplicação
+     run: npm run server &
                
-      -name: Rodar o cypress
-        uses: npx cypress open        
+    -name: Rodar o cypress
+     run: npx cypress open        
 
         
     
